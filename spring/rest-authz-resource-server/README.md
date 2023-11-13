@@ -1,18 +1,18 @@
-rest-authz-resource-server: Spring Boot REST Service Protected Using RHBK Authorization Services
+rest-authz-resource-server: Spring Boot REST Service Protected Using Red Hat build of Keycloak Authorization Services
 ===================================================
 
 Level: Beginner
 Technologies: Spring Boot
-Summary: Spring Boot REST Service Protected Using RHBK Authorization Services
-Target Product: RHBK
+Summary: Spring Boot REST Service Protected Using _Red Hat build of Keycloak_ Authorization Services
+Target Product: Red Hat build of Keycloak
 
 What is it?
 -----------
 
-This quickstart demonstrates how to protect a Spring Boot REST service using RHBK Authorization Services.
+This quickstart demonstrates how to protect a Spring Boot REST service using _Red Hat build of Keycloak_ Authorization Services.
 
-It tries to focus on the authorization features provided by RHBK Authorization Services, where resources are
-protected by a set of permissions and policies defined in RHBK and access to these resources are enforced by a policy enforcer(PEP)
+It tries to focus on the authorization features provided by _Red Hat build of Keycloak_ Authorization Services, where resources are
+protected by a set of permissions and policies defined in _Red Hat build of Keycloak_ and access to these resources are enforced by a policy enforcer(PEP)
 that intercepts every single request sent to the application to check whether or not access should be granted.
 
 System Requirements
@@ -23,26 +23,26 @@ To compile and run this quickstart you will need:
 * JDK 17
 * Apache Maven 3.8.6
 * Spring Boot 3.0.6
-* RHBK 22+
+* Red Hat build of Keycloak 22+
 
-Starting and Configuring the RHBK Server
+Starting and Configuring the Red Hat build of Keycloak Server
 -------------------
 
-To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
-[RHBK Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/getting_started_guide/index.
+To start a _Red Hat build of Keycloak_ Server you can use OpenJDK on Bare Metal, _Red Hat build of Keycloak_ Operator or any other option described in
+[Red Hat build of Keycloak Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/getting_started_guide/index.
 
-For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip _Red Hat build of Keycloak_ distribution and in the directory `bin` run this command:
 
 ```shell
 ./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-You should be able to access your RHBK server at http://localhost:8180.
+You should be able to access your _Red Hat build of Keycloak_ server at http://localhost:8180.
 
-Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the _Red Hat build of Keycloak_ Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the RHBK documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
+For more details, see the _Red Hat build of Keycloak_ documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
 
 Build and Run the Quickstart
 -------------------------------
@@ -66,7 +66,7 @@ There are 2 endpoints exposed by the service:
 * http://localhost:8080/ - can be invoked by any authenticated user
 * http://localhost:8080/protected/premium - can be invoked by users with the `user_premium` role
 
-To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a RHBK server.
+To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a _Red Hat build of Keycloak_ server.
 In this example, we are going to obtain tokens using the resource owner password grant type so that the client can act on behalf of any user available from
 the realm.
 
@@ -110,7 +110,7 @@ Accessing Protected Resources using Requesting Party Token (RPT)
 Another approach to access resources protected by a policy enforcer is using a RPT as a bearer token, instead of a regular access token. 
 The RPT is an access token with all permissions granted by the server, basically, an access token containing all permissions granted by the server.
 
-To obtain an RPT, you must first exchange an OAuth2 Access Token for a RPT by invoking the token endpoint at the RHBK server: 
+To obtain an RPT, you must first exchange an OAuth2 Access Token for a RPT by invoking the token endpoint at the _Red Hat build of Keycloak_ server: 
 
 ```bash
 export rpt=$(curl -X POST \
@@ -154,7 +154,7 @@ curl http://localhost:8080/protected/premium \
 Running tests
 --------------------
 
-Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server).
+Make sure _Red Hat build of Keycloak_ is [running](#starting-and-configuring-the-red-hat-build-of-keycloak-server).
 
 You don't need spring boot application running because a temporary server is started during test execution.
 
@@ -170,5 +170,5 @@ References
 --------------------
 
 * [Spring OAuth 2.0 Resource Server JWT](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
-* [RHBK Authorization Services](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/authorization_services_guide/index)
-* [RHBK Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)
+* [Red Hat build of Keycloak Authorization Services](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/authorization_services_guide/index)
+* [Red Hat build of Keycloak Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)

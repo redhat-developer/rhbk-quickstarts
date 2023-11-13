@@ -4,7 +4,7 @@ user-storage-properties: User Storage SPI Simple Example
 Level: Beginner  
 Technologies: JavaEE  
 Summary: User Storage SPI Simple Example  
-Target Product: <span>RHBK</span>  
+Target Product: Red Hat build of Keycloak
 Source: <https://github.com/redhat-developer/rhbk-quickstarts>  
 
 
@@ -31,7 +31,7 @@ add new users in the admin console and they will be created within the property 
 System Requirements
 -------------------
 
-You need to have <span>RHBK</span> running. It is recommended to use RHBK 22 or later.
+You need to have _Red Hat build of Keycloak_ running. It is recommended to use _Red Hat build of Keycloak_ 22 or later.
 
 All you need to build this project is Java 17 (Java SDK 17) or later and Maven 3.6.3 or later.
 
@@ -55,7 +55,7 @@ kc.[sh|bat] start-dev
 
 Enable the Provider for a Realm
 -------------------------------
-Login to the <span>RHBK</span> Admin Console and got to the User Federation tab.   You should now see your deployed providers in the add-provider list box.
+Login to the _Red Hat build of Keycloak_ Admin Console and got to the User Federation tab.   You should now see your deployed providers in the add-provider list box.
 For the `readonly-property-file` provider, all you need to do is add the provider and save it as it is hardcoded to point
 to the property file that comes with the deployment.  You will be able to login to the account service using the username `tbrady` and password
 of `superbowl`.
@@ -63,14 +63,14 @@ of `superbowl`.
 For the `writeable-property-file` provider, you will have to specify a properties file on disk on the configuration page of the provider.
 This file can be empty, but it must exist on disk otherwise the provider will fail.
 Because this provider implements the UserRegistrationProvider interface, any new user you create in the
-admin console or on the registration pages of <span>RHBK</span>, will be created in the properties file you configured.  If you go
+admin console or on the registration pages of _Red Hat build of Keycloak_, will be created in the properties file you configured.  If you go
 to the Users tab in the Admin Console and create a new user, you'll be able to see the provider in action.  You can also
 edit the file yourself to add the username/password pairs you want.
 
 Integration test of the Quickstart
 ----------------------------------
 
-1. Make sure you have an RHBK server running with an admin user in the `master` realm or use the provided docker image. Your <span>RHBK</span> should be listening on `http://localhost:8180`. You can archive this by running:
+1. Make sure you have an _Red Hat build of Keycloak_ server running with an admin user in the `master` realm or use the provided docker image. Your _Red Hat build of Keycloak_ should be listening on `http://localhost:8180`. You can archive this by running:
 
 ```
 ./kc.sh start-dev --http-port=8180

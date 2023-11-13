@@ -4,12 +4,12 @@ nodejs-resource-server: Node.js Resource Server
 Level: Beginner  
 Technologies: Node.js  
 Summary: Node.js Service  
-Target Product: <span>RHBK</span>
+Target Product: Red Hat build of Keycloak
 
 What is it?
 -----------
 
-This quickstart demonstrates how to write a RESTful service with Node.js that is secured with <span>RHBK</span>.
+This quickstart demonstrates how to write a RESTful service with Node.js that is secured with _Red Hat build of Keycloak_.
 
 There are 3 endpoints exposed by the service:
 
@@ -25,26 +25,26 @@ System Requirements
 To compile and run this quickstart you will need:
 
 * Node.js 18.16.0+
-* RHBK 22+
+* Red Hat build of Keycloak 22+
 
-Starting and Configuring the RHBK Server
+Starting and Configuring the Red Hat build of Keycloak Server
 -------------------
 
-To start a RHBK Server you can use OpenJDK on Bare Metal, RHBK Operator or any other option described in
-[RHBK Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/getting_started_guide/index.
+To start a _Red Hat build of Keycloak_ Server you can use OpenJDK on Bare Metal, _Red Hat build of Keycloak_ Operator or any other option described in
+[Red Hat build of Keycloak Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/getting_started_guide/index.
 
-For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip RHBK distribution and in the directory `bin` run this command:
+For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip _Red Hat build of Keycloak_ distribution and in the directory `bin` run this command:
 
 ```shell
 ./kc.[sh|bat] start-dev --http-port=8180
 ```
 
-You should be able to access your RHBK server at http://localhost:8180.
+You should be able to access your _Red Hat build of Keycloak_ server at http://localhost:8180.
 
-Log in as the admin user to access the RHBK Administration Console. Username should be `admin` and password `admin`.
+Log in as the admin user to access the _Red Hat build of Keycloak_ Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the RHBK documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
+For more details, see the _Red Hat build of Keycloak_ documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
 
 Alternatively, you can create the realm using the following command (it might require first to run `npm install`):
 
@@ -76,7 +76,7 @@ There are 3 endpoints exposed by the service:
 You can open the public endpoint directly in the browser to test the service. The two other endpoints are protected and require
 invoking them with a bearer token.
 
-To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a RHBK server.
+To invoke the protected endpoints using a bearer token, your client needs to obtain an OAuth2 access token from a _Red Hat build of Keycloak_ server.
 In this example, we are going to obtain tokens using the resource owner password grant type so that the client can act on behalf of any user available from
 the realm.
 
@@ -117,7 +117,7 @@ As a result, you will see the following response from the service:
 Running tests
 --------------------
 
-Make sure RHBK is [running](#starting-and-configuring-the-rhbk-server). Also make sure that node server is still listening on http://localhost:3000 .
+Make sure _Red Hat build of Keycloak_ is [running](#starting-and-configuring-the-red-hat-build-of-keycloak-server). Also make sure that node server is still listening on http://localhost:3000 .
 
 1. Open a terminal and navigate to the root directory of this quickstart.
 
@@ -139,5 +139,5 @@ npx playwright install
 References
 --------------------
 
-* [RHBK Node.js Adapter](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/securing_applications_and_services_guide/index#_javascript_adapter)
-* [RHBK Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)
+* [Red Hat build of Keycloak Node.js Adapter](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/securing_applications_and_services_guide/index#_javascript_adapter)
+* [Red Hat build of Keycloak Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)
