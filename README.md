@@ -42,6 +42,10 @@ to the version of the chrome browser used. In case of the issues, see [Chrome pa
 correct chrome driver version for your Chrome browser. Then add system property `webdriver.chrome.driver` when running the tests according to chrome version
 and add whole path to the chrome driver. For instance something like `-Dwebdriver.chrome.driver=/somedir/chromedriver-linux64-119.0.6045.105/chromedriver`.
 
+### Product testing
+
+Please refer to [README for product testing](README-product-testing.md).
+
 ## Help and Documentation
 
 * [Documentation](https://www.keycloak.org/documentation.html)

@@ -9,7 +9,18 @@ if [ "$1" = "extension" ]; then
   echo "Adding default providers when starting Keycloak server";
 
   if [ "$1" == "extension" ]; then
-    mvn -Dextension -DskipTests -B -Dnightly clean package
+    args="${*:2}"
+    if [ -n "$PRODUCT" ] && [ "$PRODUCT" == "true" ]; then
+      args="$args -s $PRODUCT_MVN_SETTINGS  -Dmaven.repo.local=$PRODUCT_MVN_REPO"
+    else
+      args="$args -s .github/maven-settings.xml"
+    fi
+    if [ -n "$SKIP_SSL_VALIDATIONS" ] && [ "$SKIP_SSL_VALIDATIONS" == "true" ]; then
+      args="$args -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true"
+    fi
+    echo "Maven arguments when building extension quickstarts: $args";
+
+    mvn -Dextension -DskipTests -B -Dnightly $args clean package
     cp extension/user-storage-simple/target/user-storage-properties-example.jar $dist/providers
     cp extension/user-storage-jpa/conf/quarkus.properties $dist/conf
     cp extension/user-storage-jpa/target/user-storage-jpa-example.jar $dist/providers
