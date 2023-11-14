@@ -1,0 +1,2 @@
+org.keycloak.quickstart.readonly.PropertyFileUserStorageProviderFactory
+org.keycloak.quickstart.writeable.PropertyFileUserStorageProviderFactory
