@@ -182,7 +182,6 @@
             <modules>
                 <module>jakarta/servlet-authz-client</module>
                 <module>jakarta/jaxrs-resource-server</module>
-                <module>jakarta/servlet-saml-service-provider</module>
             </modules>
             <dependencyManagement>
                 <dependencies>
