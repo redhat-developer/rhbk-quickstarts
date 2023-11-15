@@ -13,15 +13,11 @@ run_tests() {
   echo "*****************************************"
   if [ -n "$PRODUCT" ] && [ "$PRODUCT" == "true" ]; then
     args="$args -s $PRODUCT_MVN_SETTINGS  -Dmaven.repo.local=$PRODUCT_MVN_REPO"
-    if [ "$module" == "extension/action-token-authenticator" ] \
-        || [ "$module" == "extension/action-token-required-action" ] \
-        || [ "$module" == "extension/event-listener-sysout" ] \
-        || [ "$module" == "extension/event-store-mem" ] \
-        || [ "$module" == "extension/extend-account-console" ]; then
-      return 0
-    fi
   else
     args="$args -s .github/maven-settings.xml"
+  fi
+  if [ -n "$SKIP_SSL_VALIDATIONS" ] && [ "$SKIP_SSL_VALIDATIONS" == "true" ]; then
+    args="$args -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true"
   fi
   if [ -n "$CHROMEWEBDRIVER" ]; then
     args="$args -Dwebdriver.chrome.driver=$CHROMEWEBDRIVER/chromedriver"
@@ -30,6 +26,7 @@ run_tests() {
   fi
   args="$args -D$module"
   log_file=${module////_}.log
+  echo "Maven arguments when running tests: $args";
   if ! mvn clean install -Dnightly $args -B 2>&1 | tee test-logs/$log_file; then
     tests_with_errors+=("$module")
   fi
