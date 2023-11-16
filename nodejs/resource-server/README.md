@@ -31,7 +31,7 @@ Starting and Configuring the Red Hat build of Keycloak Server
 -------------------
 
 To start a _Red Hat build of Keycloak_ Server you can use OpenJDK on Bare Metal, _Red Hat build of Keycloak_ Operator or any other option described in
-[Red Hat build of Keycloak Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/getting_started_guide/index.
+[Red Hat build of Keycloak Getting Started guides]https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/html-single/getting_started_guide/index.
 
 For example when using Bare metal, you need to have Java 17 or later available. Then you can unzip _Red Hat build of Keycloak_ distribution and in the directory `bin` run this command:
 
@@ -44,12 +44,21 @@ You should be able to access your _Red Hat build of Keycloak_ server at http://l
 Log in as the admin user to access the _Red Hat build of Keycloak_ Administration Console. Username should be `admin` and password `admin`.
 
 Import the [realm configuration file](config/realm-import.json) to create a new realm called `quickstart`.
-For more details, see the _Red Hat build of Keycloak_ documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
+For more details, see the _Red Hat build of Keycloak_ documentation about how to [create a new realm](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/html-single/server_administration_guide/index#proc-creating-a-realm_server_administration_guide).
 
 Alternatively, you can create the realm using the following command (it might require first to run `npm install`):
 
 ```shell
 npm run create-realm
+```
+
+Use productized NodeJS adapter
+------------------------------
+In order to use productized _Red Hat build of Keycloak_ Node.js adapter, it is recommended to download it from the _Red Hat build of Keycloak_ official download pages.
+Afterwards, you can update `package.lock` file of the adapter to refer to the downloaded file. It can be changed to something like this (replace path with the actual path where you downloaded the file):
+
+```
+"keycloak-connect": "file:/<path-to-the-downloaded-file>/rhbk-22.0.6-nodejs-adapter.tar.gz"
 ```
 
 Build and Deploy the Quickstart
@@ -139,5 +148,5 @@ npx playwright install
 References
 --------------------
 
-* [Red Hat build of Keycloak Node.js Adapter](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/securing_applications_and_services_guide/index#_javascript_adapter)
+* [Red Hat build of Keycloak Node.js Adapter](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/html-single/securing_applications_and_services_guide/index#_javascript_adapter)
 * [Red Hat build of Keycloak Documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/)

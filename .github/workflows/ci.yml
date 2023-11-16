@@ -8,6 +8,7 @@ on:
 env:
   DEFAULT_JDK_VERSION: 17
   DEFAULT_JDK_DIST: temurin
+  KEYCLOAK_SERVER_VERSION: 22.0.5
 
 jobs:
 
