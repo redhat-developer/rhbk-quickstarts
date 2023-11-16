@@ -21,7 +21,7 @@
 
     <groupId>org.keycloak.quickstarts</groupId>
     <artifactId>keycloak-quickstart-parent</artifactId>
-    <version>999.0.0-SNAPSHOT</version>
+    <version>22.0.6.redhat-00002</version>
     <packaging>pom</packaging>
     <name>Keycloak Quickstart: parent</name>
     <description>Parent</description>
@@ -36,6 +36,8 @@
 
     <properties>
         <version.keycloak>${project.version}</version.keycloak>
+        <quarkus.version>3.2.6.Final-redhat-00002</quarkus.version>
+
         <servlet.api.30.version>1.0.2.Final</servlet.api.30.version>
         <jboss-jaxrs-api_2.1_spec>1.0.1.Final</jboss-jaxrs-api_2.1_spec>
         <version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
@@ -299,13 +301,6 @@
                                             <type>zip</type>
                                             <outputDirectory>target</outputDirectory>
                                         </artifactItem>
-                                        <artifactItem>
-                                            <groupId>org.keycloak</groupId>
-                                            <artifactId>keycloak-saml-wildfly-adapter-jakarta-dist</artifactId>
-                                            <version>${version.keycloak}</version>
-                                            <type>zip</type>
-                                            <outputDirectory>target/wildfly-${version.wildfly}</outputDirectory>
-                                        </artifactItem>
                                     </artifactItems>
                                 </configuration>
                             </execution>
@@ -437,6 +432,13 @@
                         <groupId>org.keycloak.bom</groupId>
                         <artifactId>keycloak-spi-bom</artifactId>
                         <version>${version.keycloak}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.redhat.quarkus.platform</groupId>
+                        <artifactId>quarkus-bom</artifactId>
+                        <version>${quarkus.version}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>

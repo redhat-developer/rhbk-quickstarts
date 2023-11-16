@@ -3,7 +3,7 @@
 _Red Hat build of Keycloak_ is an Open Source Identity and Access Management solution for modern Applications and Services.
 
 The quickstarts herein provided demonstrate securing applications with _Red Hat build of Keycloak_ using different programming languages (and frameworks) 
-and how to extend the server capabilities through a set of Java-based [Service Provider Interfaces(SPI)](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/server_developer_guide/index). 
+and how to extend the server capabilities through a set of Java-based [Service Provider Interfaces(SPI)](https://access.redhat.com/documentation/en-us/red_hat_build_of_keycloak/22.0/html-single/server_developer_guide/index). 
 They provide small, specific, working examples that can be used as a reference for your own project.
 
 They are organized in this repository under different categories (or directories) as follows:
@@ -34,6 +34,15 @@ First clone the quickstarts repository:
 
 Each quickstart provides its own documentation with the steps you need to follow in order to build, test, and run the example.
 Look at the `README.md` file at the root of a quickstart for more details.
+
+## Maven repository
+
+In order to use maven repository with the productized artifacts, it is needed to add repository https://maven.repository.redhat.com/ga/ to you settings.xml file.
+You can see this repository in the [maven-settings.xml file](.github/maven-settings.xml). You can either add the repository to your default `settings.xml` file
+,which is usually in `<your-home-dir>/.m2/settings.xml` file. Or you can run all the maven commands referred from individual quickstarts with the switch pointing to `maven-settings.xml` file:
+```
+mvn <other arguments as described in the specific quickstarts> -s <path to the file>/.github/maven-settings.xml
+```
 
 ### Chrome driver version
 

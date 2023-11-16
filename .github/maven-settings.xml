@@ -26,7 +26,7 @@
             <updatePolicy>never</updatePolicy>
           </releases>
           <snapshots>
-            <enabled>true</enabled>
+            <enabled>false</enabled>
             <updatePolicy>never</updatePolicy>
           </snapshots>
         </repository>
@@ -42,16 +42,53 @@
             <updatePolicy>never</updatePolicy>
           </releases>
           <snapshots>
-            <enabled>true</enabled>
+            <enabled>false</enabled>
             <updatePolicy>never</updatePolicy>
           </snapshots>
         </pluginRepository>
       </pluginRepositories>
     </profile>
+
+    <profile>
+      <id>redhat-ga-repository</id>
+      <repositories>
+        <repository>
+          <id>redhat-ga-repository-group</id>
+          <name>RedHat GA Repository Group</name>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>redhat-ga-repository-group</id>
+          <name>RedHat GA Repository Group</name>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
   </profiles>
 
   <activeProfiles>
-    <activeProfile>jboss-public-repository</activeProfile>
+    <activeProfile>redhat-ga-repository</activeProfile>
   </activeProfiles>
 
 </settings>

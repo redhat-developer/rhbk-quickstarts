@@ -9,7 +9,8 @@ if [ "$1" = "extension" ]; then
   echo "Adding default providers when starting Keycloak server";
 
   if [ "$1" == "extension" ]; then
-    mvn -Dextension -DskipTests -B -Dnightly clean package
+    mvn_args="-s .github/maven-settings.xml"
+    mvn -Dextension -DskipTests -B -Dnightly $mvn_args clean package
     cp extension/user-storage-simple/target/user-storage-properties-example.jar $dist/providers
     cp extension/user-storage-jpa/conf/quarkus.properties $dist/conf
     cp extension/user-storage-jpa/target/user-storage-jpa-example.jar $dist/providers
