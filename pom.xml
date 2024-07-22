@@ -67,6 +67,7 @@
         <version.json.javax>1.1.2</version.json.javax>
         <version.yasson>1.0.8</version.yasson>
         <version.jackson>2.14.2</version.jackson>
+        <org.jboss.galleon.version>5.2.2.Final</org.jboss.galleon.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -184,6 +185,7 @@
             <modules>
                 <module>jakarta/servlet-authz-client</module>
                 <module>jakarta/jaxrs-resource-server</module>
+                <module>jakarta/servlet-saml-service-provider</module>
             </modules>
             <dependencyManagement>
                 <dependencies>
@@ -307,22 +309,51 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>${version.antrun.maven.plugin}</version>
+                        <groupId>org.jboss.galleon</groupId>
+                        <artifactId>galleon-maven-plugin</artifactId>
+                        <version>${org.jboss.galleon.version}</version>
+                        <!--Provision a server with relevant layers-->
                         <executions>
                             <execution>
-                                <id>install-adapters</id>
+                                <id>saml-adapter-installation</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
-                                    <goal>run</goal>
+                                    <goal>provision</goal>
                                 </goals>
                                 <configuration>
-                                    <target name="run">
-                                        <exec dir="target/wildfly-${version.wildfly}/bin" executable="${jboss-cli.executable}" inputstring="">
-                                            <arg value="--file=adapter-elytron-install-saml-offline.cli" />
-                                        </exec>
-                                    </target>
+                                    <install-dir>target/wildfly-${version.wildfly}</install-dir>
+                                    <record-state>true</record-state>
+                                    <log-time>${galleon.log.time}</log-time>
+                                    <offline>false</offline>
+                                    <feature-packs>
+                                        <feature-pack>
+                                            <groupId>org.keycloak</groupId>
+                                            <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>
+                                            <version>${project.version}</version>
+                                        </feature-pack>
+                                    </feature-packs>
+                                    <pluginOptions>
+                                        <optional-packages>all</optional-packages>
+                                    </pluginOptions>
+                                    <configurations>
+                                        <config>
+                                            <model>standalone</model>
+                                            <name>standalone.xml</name>
+                                            <layers>
+                                                <layer>core-server</layer>
+                                                <layer>web-server</layer>
+                                                <layer>jaxrs-server</layer>
+                                                <layer>datasources-web-server</layer>
+                                                <layer>web-console</layer>
+
+                                                <layer>keycloak-saml</layer>
+                                                <layer>keycloak-client-saml</layer>
+                                                <layer>keycloak-client-saml-ejb</layer>
+                                                <layer>elytron</layer>
+                                                <layer>elytron-oidc-client</layer>
+                                            </layers>
+                                        </config>
+                                    </configurations>
                                 </configuration>
                             </execution>
                         </executions>
