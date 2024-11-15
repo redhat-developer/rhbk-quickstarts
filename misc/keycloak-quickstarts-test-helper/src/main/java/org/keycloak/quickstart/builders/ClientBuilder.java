@@ -17,10 +17,10 @@
 
 package org.keycloak.quickstart.test.builders;
 
-import org.keycloak.protocol.oidc.OIDCAdvancedConfigWrapper;
 import org.keycloak.representations.idm.ClientRepresentation;
 
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * @author <a href="mailto:bruno@abstractj.org">Bruno Oliveira</a>
@@ -89,8 +89,11 @@ public class ClientBuilder {
 
         if (rep.getRedirectUris() == null && rep.getRootUrl() != null)
             rep.setRedirectUris(Collections.singletonList(rep.getRootUrl().concat("/*")));
-        if (OIDCAdvancedConfigWrapper.fromClientRepresentation(rep).getPostLogoutRedirectUris() == null) {
-            OIDCAdvancedConfigWrapper.fromClientRepresentation(rep).setPostLogoutRedirectUris(Collections.singletonList("+"));
+        if (rep.getAttributes() == null) {
+            rep.setAttributes(new HashMap<>());
+        }
+        if (rep.getAttributes().get("post.logout.redirect.uris") == null) {
+            rep.getAttributes().put("post.logout.redirect.uris", "+");
         }
         return rep;
     }
