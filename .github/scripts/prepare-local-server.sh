@@ -4,7 +4,6 @@ mkdir keycloak-dist
 WGET_ARGS=
 
 if [ -n "$PRODUCT" ] && [ "$PRODUCT" == "true" ] && [ -n "$PRODUCT_BUNDLE_URL" ]; then
-  echo "Downloading product bits from $PRODUCT_BUNDLE_URL"
   URL=$PRODUCT_BUNDLE_URL;
   if [ -n "$SKIP_SSL_VALIDATIONS" ] && [ "$SKIP_SSL_VALIDATIONS" == "true" ]; then
     WGET_ARGS="--no-check-certificate";
@@ -13,7 +12,9 @@ elif [[ ( -n "$GITHUB_BASE_REF" &&  "$GITHUB_BASE_REF" == "latest" ) ]] || [[ ( 
   KEYCLOAK_SERVER_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml)
 fi
 
-if [[ -n "$KEYCLOAK_SERVER_VERSION" ]]; then
+if [[ -n "$URL" ]]; then
+  echo "Downloading product bits from $URL"
+elif [[ -n "$KEYCLOAK_SERVER_VERSION" ]]; then
   echo "Using corresponding Keycloak version: $KEYCLOAK_SERVER_VERSION"
   URL="https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_SERVER_VERSION}/keycloak-${KEYCLOAK_SERVER_VERSION}.tar.gz"
 else
