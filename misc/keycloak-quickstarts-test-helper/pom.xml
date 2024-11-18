@@ -7,6 +7,7 @@
         <artifactId>keycloak-quickstarts-misc-parent</artifactId>
         <groupId>org.keycloak.quickstarts</groupId>
         <version>26.0.5.redhat-00003</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>keycloak-quickstarts-test-helper</artifactId>
     <name>keycloak-quickstarts-test-helper</name>

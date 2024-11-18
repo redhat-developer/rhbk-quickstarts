@@ -4,6 +4,7 @@
         <artifactId>keycloak-quickstart-parent</artifactId>
         <groupId>org.keycloak.quickstarts</groupId>
         <version>26.0.5.redhat-00003</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>Keycloak Quickstarts Misc</name>
     <description/>

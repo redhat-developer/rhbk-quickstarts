@@ -81,6 +81,13 @@
         <dependencies>
             <dependency>
                 <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-parent</artifactId>
+                <version>${version.keycloak}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
                 <artifactId>keycloak-policy-enforcer</artifactId>
                 <version>${version.keycloak.client}</version>
             </dependency>
